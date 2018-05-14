@@ -3,54 +3,96 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/04/17 16:02:35 by rfumeron          #+#    #+#              #
-#    Updated: 2018/05/10 16:24:19 by rfumeron         ###   ########.fr        #
+#    Created: 2017/11/30 19:03:50 by mrakhman          #+#    #+#              #
+#    Updated: 2018/05/01 16:56:55 by mrakhman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:=	libft.a
+NAME = libft.a
 
-# Directories
-SRCDIR	:=	.
-OBJDIR	:=	.
-INCDIR	:=	.
-CC		:=	clang
-CFLAGS	:= 	-Werror -Wall -Wextra -I$(INCDIR)
-RM		:=	/bin/rm -f
+FUNCTIONS = \
+ft_strlen \
+ft_atoi \
+ft_strcpy \
+ft_strncpy \
+ft_strstr \
+ft_strcmp \
+ft_strncmp \
+ft_isalpha \
+ft_strdup \
+ft_isascii \
+ft_isdigit \
+ft_isalnum \
+ft_isprint \
+ft_toupper \
+ft_tolower \
+ft_strnstr \
+ft_memset \
+ft_bzero \
+ft_memcpy \
+ft_memccpy \
+ft_memmove \
+ft_memchr \
+ft_memcmp \
+ft_strcat \
+ft_strncat \
+ft_strlcat \
+ft_strchr \
+ft_strrchr \
+ft_putchar \
+ft_putstr \
+ft_putnbr \
+ft_memalloc \
+ft_memdel \
+ft_strnew \
+ft_strdel \
+ft_strclr \
+ft_striter \
+ft_striteri \
+ft_strmap \
+ft_strmapi \
+ft_strequ \
+ft_strnequ \
+ft_strsub \
+ft_strjoin \
+ft_strtrim \
+ft_strsplit \
+ft_itoa \
+ft_putendl \
+ft_putchar_fd \
+ft_putstr_fd \
+ft_putendl_fd \
+ft_putnbr_fd \
+ft_lstnew \
+ft_lstdelone \
+ft_lstdel \
+ft_lstadd \
+ft_lstiter \
+ft_lstmap \
+ft_is_odd \
+ft_is_even \
+ft_strlowcase \
+ft_strupcase \
+ft_strcapitalize \
+ft_get_next_line
 
-# Files
-SRC	:=	ft_atoi.c ft_isprint.c ft_lstmap.c ft_memcpy.c \
-		ft_putendl.c ft_strcat.c ft_strdup.c ft_strlen.c ft_strnequ.c \
-		ft_strsub.c ft_bzero.c ft_itoa.c ft_lstnew.c ft_memdel.c \
-		ft_putendl_fd.c ft_strchr.c ft_strequ.c ft_strmap.c \
-		ft_strnew.c ft_strtrim.c ft_isalnum.c ft_lstadd.c ft_memccpy.c \
-		ft_memalloc.c ft_memmove.c ft_putnbr.c ft_strclr.c ft_striter.c \
-		ft_strmapi.c ft_strnstr.c ft_tolower.c ft_isalpha.c ft_lstdel.c \
-		ft_memset.c ft_putnbr_fd.c ft_strcmp.c ft_striteri.c ft_strncat.c \
-		ft_strrchr.c ft_toupper.c ft_isascii.c ft_lstdelone.c ft_memchr.c \
-		ft_putchar.c ft_putstr.c ft_strcpy.c ft_strjoin.c ft_strncmp.c \
-		ft_strsplit.c ft_isdigit.c ft_lstiter.c ft_memcmp.c ft_putchar_fd.c \
-		ft_putstr_fd.c ft_strdel.c ft_strlcat.c ft_strncpy.c ft_strstr.c \
-		ft_strtrimchar.c ft_strrev.c ft_lstaddback.c ft_strtolower.c \
-		ft_strtoupper.c ft_pow2.c
-OBJ		:=	$(SRC:.c=.o)
+FLAGS = -Wall -Wextra -Werror -I.
 
-# Rules :
+OBJECTS = $(addsuffix .o,$(FUNCTIONS))
+
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar -rc $@ $^
-	ranlib $@
-
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+$(NAME):
+	gcc -c $(FLAGS) $(addsuffix .c,$(FUNCTIONS))
+	ar rc $(NAME) $(OBJECTS)
+	ranlib $(NAME)
 
 clean:
-	$(RM) $(OBJ)
+	/bin/rm -f $(OBJECTS)
 
 fclean: clean
-	$(RM) $(NAME)
+	/bin/rm -f $(NAME)
 
 re: fclean all

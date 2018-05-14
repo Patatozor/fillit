@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/06 19:52:40 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/14 16:27:45 by mrakhman         ###   ########.fr       */
+/*   Created: 2018/05/10 16:10:25 by rfumeron          #+#    #+#             */
+/*   Updated: 2018/05/14 18:11:12 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,26 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include "libft/libft.h"
+// # define BUF_SIZE 21
+// # define FILE_ERROR (-1)
+// # define MALLOC_ERROR (-2)
+// # define CAT_ERROR (-3)
 
-
-# include "../src/libft/libft.h"
-//# define BUFF_SIZE 4096
-
-typedef struct s_tetrimino
+typedef	struct	s_point
 {
-	char **tetrimino;
-	char letter;
-	int x;
-	int y;
-	struct s_tetrimino *next;
-}			t_tetrimino;
+	int		x;
+	int		y;
+}				t_point;
 
-_Bool tetrimino_is_valid(t_tetrimino *tetrimino);
+typedef struct	s_figure
+{
+	t_point	points[4];
+	char letter;
+}				t_figure;
+
+int				ft_append(char **s1, char *s2);
+_Bool tetrimino_is_valid(t_figure *t_figure);
+
 
 #endif

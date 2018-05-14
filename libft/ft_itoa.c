@@ -3,54 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/17 13:46:42 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/04/17 14:57:51 by rfumeron         ###   ########.fr       */
+/*   Created: 2017/12/07 12:38:51 by mrakhman          #+#    #+#             */
+/*   Updated: 2017/12/09 18:30:05 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** This functions calculates 4 counters
-** counters[0] is the max divisor
-** counters[1] is the number of bytes to allocate for the string in ft_itoa
-** counters[2] is whether we need another byte for the '-' or not
-** counters[3] is the absolute value of n
-*/
-
-static void	ft_counters(int n, unsigned int *counters)
+static int	count_len(int n, int *sign)
 {
-	counters[0] = 1;
-	counters[1] = 1;
-	counters[2] = (n >= 0) ? 0 : 1;
-	counters[3] = (n >= 0) ? n : -n;
-	while (counters[3] / counters[0] >= 10)
+	unsigned int	nb;
+	size_t			len;
+
+	nb = n;
+	len = 1;
+	*sign = 0;
+	if (n < 0)
 	{
-		counters[0] *= 10;
-		counters[1]++;
+		nb = nb * -1;
+		*sign = 1;
+		len++;
 	}
+	while (nb / 10 > 0)
+	{
+		nb = nb / 10;
+		len++;
+	}
+	return (len);
 }
 
 char		*ft_itoa(int n)
 {
-	unsigned int	i[4];
-	unsigned int	j;
-	char			*ret;
+	unsigned int	nb;
+	char			*str;
+	long			k;
+	size_t			len;
+	int				sign;
 
-	ft_counters(n, i);
-	j = 0;
-	if (!(ret = malloc(sizeof(char) * (i[1] + i[2] + 1))))
+	len = count_len(n, &sign);
+	nb = n;
+	str = (char*)malloc(sizeof(char) * len + 1);
+	if (!str)
 		return (NULL);
-	if (i[2] == 1)
-		ret[j++] = '-';
-	while (i[0] >= 1)
+	if (sign == 1)
 	{
-		ret[j++] = i[3] / i[0] + '0';
-		i[3] = i[3] % i[0];
-		i[0] /= 10;
+		str[0] = '-';
+		nb = nb * -1;
 	}
-	ret[j] = '\0';
-	return (ret);
+	k = len - 1;
+	while (k >= sign)
+	{
+		str[k] = nb % 10 + '0';
+		nb = nb / 10;
+		k--;
+	}
+	str[len] = '\0';
+	return (str);
 }

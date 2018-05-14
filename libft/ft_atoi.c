@@ -3,31 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/16 13:25:34 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/04/18 16:00:10 by rfumeron         ###   ########.fr       */
+/*   Created: 2017/11/28 15:38:00 by mrakhman          #+#    #+#             */
+/*   Updated: 2017/12/13 19:43:13 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+static int	nb_return(long long nb)
 {
-	unsigned long int	nb;
-	int					signe;
-
-	nb = 0;
-	while (*str == 32 || *str == 9 || *str == 11 || *str == 10 || *str == 13
-			|| *str == 12)
-		str++;
-	signe = (*str == '-') ? -1 : 1;
-	str = (*str == '-' || *str == '+') ? str + 1 : str;
-	while (*str >= '0' && *str <= '9')
-		nb = (nb * 10) + *str++ - '0';
-	if (nb > 9223372036854775807ul && signe == 1)
-		return (-1);
-	if (nb > 9223372036854775808ul && signe == -1)
+	if (nb < INT_MIN)
 		return (0);
-	return ((int)nb * signe);
+	if (nb > INT_MAX)
+		return ((int)nb);
+	return (nb);
+}
+
+int			ft_atoi(const char *str)
+{
+	int			negat;
+	long long	nb;
+
+	negat = 1;
+	nb = 0;
+	while ((*str >= 9 && *str <= 19) || *str == 32)
+		str++;
+	if (*str == '+')
+		str++;
+	else if (*str == '-')
+	{
+		negat = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9' && (nb < 2147483648 ||
+				(nb <= 2147483648 && negat == -1)))
+	{
+		nb = (nb * 10) + (*str - '0');
+		str++;
+	}
+	nb *= negat;
+	return (nb_return(nb));
 }

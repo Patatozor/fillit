@@ -6,7 +6,7 @@
 #    By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/06 17:03:50 by mrakhman          #+#    #+#              #
-#    Updated: 2018/05/14 16:27:43 by mrakhman         ###   ########.fr        #
+#    Updated: 2018/05/14 18:09:57 by mrakhman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,12 @@ readfile.c \
 
 FLAGS = -Wall -Wextra -Werror
 
-INC = -I includes
+INC = -I .
 
 OBJ = $(addsuffix .o,$(SRC))
 
-SRC_POS = $(addprefix $(SRC_PATH),$(SRC))
 
-SRC_PATH = src/
-
-LIBFT =	src/libft/libft.a
+LIBFT =	libft/libft.a
 
 CC = gcc
 
@@ -36,17 +33,17 @@ $(NAME): $(LIBFT) $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT)
 
 $(OBJ): $(LIBFT)
-	$(CC) $(FLAGS) -c $(SRC_POS)
+	$(CC) $(FLAGS) -c $(SRC)
 
 $(LIBFT):
-		make -C ./src/libft/
+		make -C ./libft/
 
 clean:
 	rm -f $(OBJ)
-			make clean -C ./src/libft/
+			make clean -C ./libft/
 
 fclean: clean
 	rm -f $(NAME)
-			make fclean -C ./src/libft/
+			make fclean -C ./libft/
 
 re: fclean all
