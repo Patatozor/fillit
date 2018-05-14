@@ -6,21 +6,21 @@
 #    By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/06 17:03:50 by mrakhman          #+#    #+#              #
-#    Updated: 2018/05/14 18:09:57 by mrakhman         ###   ########.fr        #
+#    Updated: 2018/05/14 18:19:00 by mrakhman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRC = main.c\
-tetriminos.c \
-readfile.c \
+FUNCTIONS = main \
+tetrimino_is_valid \
+
 
 FLAGS = -Wall -Wextra -Werror
 
-INC = -I .
+INC = -I.
 
-OBJ = $(addsuffix .o,$(SRC))
+OBJ = $(addsuffix .o,$(FUNCTIONS))
 
 
 LIBFT =	libft/libft.a
@@ -33,7 +33,7 @@ $(NAME): $(LIBFT) $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT)
 
 $(OBJ): $(LIBFT)
-	$(CC) $(FLAGS) -c $(SRC)
+	$(CC) $(FLAGS) -c $(FUNCTIONS)
 
 $(LIBFT):
 		make -C ./libft/

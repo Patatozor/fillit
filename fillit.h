@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 16:10:25 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/14 18:11:12 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/14 18:15:25 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <sys/types.h>
 # include <sys/stat.h>
+# include <sys/types.h>
 # include "libft/libft.h"
 // # define BUF_SIZE 21
 // # define FILE_ERROR (-1)
@@ -37,7 +37,6 @@ typedef struct	s_figure
 	char letter;
 }				t_figure;
 
-int				ft_append(char **s1, char *s2);
 _Bool tetrimino_is_valid(t_figure *t_figure);
 
 
