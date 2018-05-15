@@ -17,7 +17,7 @@
 # include <unistd.h>
 # define INT_MAX __INT_MAX__
 # define INT_MIN (-__INT_MAX__  -1)
-# define BUFF_SIZE 1
+# define BUFF_SIZE 10
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>

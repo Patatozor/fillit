@@ -16,6 +16,7 @@ FUNCTIONS = main \
 tetrimino_is_valid \
 
 
+
 FLAGS = -Wall -Wextra -Werror
 
 INC = -I.
