@@ -10,32 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fillit.h"
+#include "fillit.h"
 
-char		*ret_file(int argc, char **argv)
+char		*ret_file_string(char *filename)
 {
-	int		result;
 	char 	*file;
-	char	*line;
+	char	*tmp;
+	char	buf[BUFF_SIZE];
 	int		fd;
+	int		read_ret;
 
-	result = 1;
-	file = NULL;
-
-	if (argc == 1)
-		fd = open(argv[1], O_RDONLY);
-	//check on open
-
-		result = get_next_line(fd, &file);
-
-
-
-	while (result > 0)
+	file = malloc(sizeof(char));
+	file[0] = 0;
+	if ((fd = open(filename, O_RDONLY)) == -1)
+		return ("error");
+	while ((read_ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		result = ft_strjoin(get_next_line(fd, &line));
-		ft_strjoin(line)
-
+		tmp = file;
+		file = ft_strjoin(file, buf);
+		free(tmp);
 	}
-
-	return (0);
+	close(fd);
+	return (file);
 }

@@ -16,11 +16,8 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
 # include <sys/stat.h>
-# include <sys/types.h>
 # include "libft/libft.h"
-// # define BUF_SIZE 21
 // # define FILE_ERROR (-1)
 // # define MALLOC_ERROR (-2)
 // # define CAT_ERROR (-3)
@@ -38,6 +35,7 @@ typedef struct	s_figure
 }				t_figure;
 
 _Bool tetrimino_is_valid(t_figure *t_figure);
-
+char		*ret_file_string(char *filename);
+int		smallest_square_side(int tetrimino_count);
 
 #endif
