@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 16:10:25 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/14 18:15:25 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/16 22:40:31 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ typedef struct	s_figure
 	char letter;
 }				t_figure;
 
-_Bool tetrimino_is_valid(t_figure *t_figure);
-char		*ret_file_string(char *filename);
+_Bool	tetrimino_is_valid(t_figure *t_figure);
+char	*ret_file_string(char *filename);
 int		smallest_square_side(int tetrimino_count);
+int		wrong_symbols(char *str);
+int		len_4_symbols(char *str);
+int		height_4_lines(char *str);
 
 #endif
