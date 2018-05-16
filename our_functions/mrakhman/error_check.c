@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 22:04:52 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/16 22:40:28 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/16 23:00:31 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,11 @@ int height_4_lines(char *str)
 		return (0);
 	while (str[i] && str[i + 1]) 
 	{
-		while (str[i] != '\n' && str[i + 1] != '\n')
+		line_count = 0;
+		while (str[i] != '\n' && str[i - 1] != '\n')
 		{
-			line_count = 0;
 			while (str[i] != '\n')
-			{
 				i++;
-				line_count = 1;
-			}
 			if (str[i] == '\n' && str[i - 1] != '\n')
 			{
 				line_count++;
