@@ -6,21 +6,21 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/12 19:48:25 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/12 20:49:51 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/17 20:44:47 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fillit.h"
 
-_Bool tetrimino_is_valid(t_tetrimino *tetrimino)
+_Bool	tetrimino_is_valid(t_tetrimino *tetrimino)
 {
-	int i;
-	int j;
-	int counter;
+	int	i;
+	int	j;
+	int	counter;
 
 	counter = 0;
 	i = -1;
-	while(++i < 4)
+	while (++i < 4)
 	{
 		j = -1;
 		while (++j < 4)
