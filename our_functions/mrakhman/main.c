@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 16:03:02 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/16 22:40:30 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/17 19:31:55 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int main(int argc, char **argv)
 //	printf("%d\n", wrong_symbols(str));
 //	printf("%d\n", len_4_symbols(str));
 	printf("%d\n", height_4_lines(str));
+	
 return (0);
 }
