@@ -6,37 +6,37 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/12 19:48:25 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/18 16:43:23 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/18 17:30:51 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-_Bool	tetrimino_is_valid(t_tetrimino *tetrimino)
+int		tetrimino_is_valid(t_figure *f)
 {
-	int	i;
-	int	j;
-	int	counter;
+	int		counter;
+	int		i;
+	t_point	*p;
 
+	i = 0;
 	counter = 0;
-	i = -1;
-	while (++i < 4)
+	while (++i < 3)
 	{
-		j = -1;
-		while (++j < 4)
-		{
-			if (tetrimino->tetrimino[i][j] == '#')
-			{
-				if (i > 0 && tetrimino->tetrimino[i - 1][j] == '#')
-					counter++;
-				if (i < 3 && tetrimino->tetrimino[i + 1][j] == '#')
-					counter++;
-				if (j > 0 && tetrimino->tetrimino[i][j - 1] == '#')
-					counter++;
-				if (j < 3 && tetrimino->tetrimino[i][j + 1] == '#')
-					counter++;
-			}
-		}
+		p = &(f->p[i]);
+		if ((p->x == (f->p[i + 1]).x && p->y != (f->p[i + 1]).y)
+			|| (p->y == (f->p[i + 1]).y && p->x != (f->p[i + 1]).x))
+			counter += 2;
 	}
-	return (counter == 6 || counter == 8);
+	while (i >= 2)
+	{
+		p = &(f->p[i]);
+		if ((p->x == (f->p[0]).x && p->y != (f->p[0]).y)
+			|| (p->y == (f->p[0]).y && p->x != (f->p[0]).x))
+			counter += 2;
+		i--;
+	}
+	if ((p->x == (f->p[1]).x && p->y != (f->p[1]).y)
+		|| (p->y == (f->p[1]).y && p->x != (f->p[1]).x))
+		counter += 2;
+	return ((counter == 6 || counter == 8) ? 1 : 0);
 }

@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 11:07:57 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/18 15:45:28 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/18 17:32:03 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_figure	*store_shapes(char *str)
 	while (i < shapes)
 	{
 		shapes_table[i] = initialize_figure(str, i);
+		if (!tetrimino_is_valid(&(shapes_table[i])))
+			return (NULL);
 		i++;
 	}
 	return (shapes_table);
