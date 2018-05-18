@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 16:10:25 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/18 16:53:17 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/18 17:05:52 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef	struct	s_point
 
 typedef struct	s_figure
 {
-	t_point	points[4];
+	t_point	p[4];
 	int		xmax;
 	int		ymax;
 	char	letter;
