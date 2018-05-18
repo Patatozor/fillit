@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 22:04:52 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/18 15:02:13 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/18 16:44:27 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Function checks if all string elements are just '.' || '#' || '\n'
 */
 
-int	wrong_symbols(char *str)
+static int	wrong_symbols(char *str)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ int	wrong_symbols(char *str)
 ** Function checks if Tetrimino is = 4 symbols wide (before \n)
 */
 
-int	len_4_symbols(char *str)
+static int	len_4_symbols(char *str)
 {
 	int	i;
 	int	symbol_count;
@@ -60,7 +60,7 @@ int	len_4_symbols(char *str)
 ** Function checks if Tetrimino is = 4 lines long
 */
 
-int	height_4_lines(char *str)
+static int	height_4_lines(char *str)
 {
 	int	i;
 	int	line_count;
@@ -92,7 +92,7 @@ int	height_4_lines(char *str)
 ** Function checks that it's only 1 gap line between Tetriminos
 */
 
-int	gap_between_figures(char *str)
+static int	gap_between_figures(char *str)
 {
 	int	i;
 	int	gap_count;
