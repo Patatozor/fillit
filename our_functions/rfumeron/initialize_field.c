@@ -6,24 +6,27 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 12:11:32 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/18 12:18:49 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/18 14:48:16 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fillit.h"
 
-t_point	*initialize_field(int sqr_len)
+char	**initialize_field(int sqr_len)
 {
-	t_pointa	*game_field;
-	int			x;
-	int			y;
-
-	x = 0;
+	char	**grid;
+	int		x;
+	
 	y = 0;
-	if (!(game_fied = malloc(sizeof(t_point) * (sqr_len * sqr_len))))
+	grid = NULL;
+	if (!(grid = malloc(sizeof(char *) * sqr_len)))
 		return (NULL);
-	while (x < (sqr_len * sqr_len))
+	while (y < sqr_len)
 	{
-		(game_field[i])
+		if (!(grid[x] = malloc(sizeof(char) * sqr_len)))
+			return (NULL);
+		ft_memset(grid[y], '.', sqr_len);
+		y++;
 	}
+	return (grid);
 }
