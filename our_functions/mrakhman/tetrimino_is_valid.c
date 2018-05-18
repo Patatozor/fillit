@@ -6,11 +6,11 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/12 19:48:25 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/17 20:44:47 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/18 16:43:23 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/fillit.h"
+#include "fillit.h"
 
 _Bool	tetrimino_is_valid(t_tetrimino *tetrimino)
 {
