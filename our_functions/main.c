@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_figure.c                                :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/18 11:20:19 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/18 15:44:21 by mrakhman         ###   ########.fr       */
+/*   Created: 2018/05/18 14:53:04 by mrakhman          #+#    #+#             */
+/*   Updated: 2018/05/18 15:50:23 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fillit.h"
+#include "fillit.h"
+#include <stdio.h>
 
-t_figure	initialize_figure(char *str, int index)
+int	main(int argc, char **argv)
 {
-	t_figure	figure;
-	t_figure	*pfigure;
-	int			i;
-	char		*str_chunk;
+	char		*str;
+	t_figure 	*shapes;
 
-	i = 0;
-	figure.xmax = 0;
-	figure.ymax = 0;
-	figure.letter = 'A' + index;
-	str_chunk = ft_strsub(str, index * 21, 20);
-	while (i < 4)
+	if (argc != 2)
 	{
-		(figure.points)[i] = initialize_point(str_chunk, i);
-		i++;
+		ft_putstr("error");
+		ft_putchar('\n');
+		return (0);
 	}
-	pfigure = &figure;
-	correct_points(pfigure);
-	return (figure);
+	str = NULL;
+	str = (ret_file_string(argv[1]));
+	printf("%s\n", str);
+	if ((shapes = store_shapes(str)) == NULL)
+		return (0);
+	printf("x: %d y: %d\n", (shapes[1]).xmax, (shapes[0]).ymax);
+	return (1);
+
 }

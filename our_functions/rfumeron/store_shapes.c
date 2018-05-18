@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 11:07:57 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/18 14:44:06 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/18 15:45:28 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_figure	*store_shapes(char *str)
 		return (NULL);
 	while (i < shapes)
 	{
-		shapes_table[i] = initialize_figure(i, str);
+		shapes_table[i] = initialize_figure(str, i);
 		i++;
 	}
 	return (shapes_table);

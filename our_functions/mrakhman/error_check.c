@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 22:04:52 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/17 20:42:00 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/18 15:02:13 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,18 @@ int	gap_between_figures(char *str)
 			return (0);
 		gap_count = 0;
 	}
+	return (1);
+}
+
+int	error_check(char *str)
+{
+	if (wrong_symbols(str) == 0)
+		return (0);
+	if (len_4_symbols(str) == 0)
+		return (0);
+	if (height_4_lines(str) == 0)
+		return (0);
+	if (gap_between_figures(str) == 0)
+		return (0);
 	return (1);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_point.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 11:32:19 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/18 14:49:52 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/18 15:45:01 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fillit.h"
 
-t_point	*initialize_point(char *str, int index)
+t_point	initialize_point(char *str, int index)
 {
 	int		i;
 	int		j;
