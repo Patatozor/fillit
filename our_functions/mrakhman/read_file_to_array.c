@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/20 21:18:21 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/21 21:12:23 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/22 17:14:29 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,21 @@ int min_coordinate_i(char **str)
 	return (i_min);
 }
 
+void swap_dot_and_sharp(char **str, int i_min)
+{
+	int i;
+	int j;
+	char *tmp;
+
+	tmp = "11110";
+	i = 0;
+	j = 0;
+	if (i_min > 0)
+	{
+		while (str[i] && str[i + i_min] && i < 4)
+		{
+			ft_strcpy(tmp, str[i]);
+
 
 
 
@@ -131,6 +146,8 @@ int	main(int argc, char **argv)
 {
 	char	**file;
 	char	**one_tetrimino;
+	int i_min;
+	int j_min;
 	int i;
 
 	i = 0;
@@ -143,8 +160,10 @@ int	main(int argc, char **argv)
 	}
 	file = read_to_array(argv[1]);
 	one_tetrimino = get_one_tetrimino(file);
-	// min_coordinate_i(one_tetrimino);
+	i_min = min_coordinate_i(one_tetrimino);
 	// min_coordinate_j(one_tetrimino);
+	swap_dot_and_sharp(one_tetrimino, i_min);
+
 
 
 	while (one_tetrimino)
@@ -157,6 +176,7 @@ int	main(int argc, char **argv)
 		if (!one_tetrimino[i])
 			return (0);
 		one_tetrimino = get_one_tetrimino(file);
+		swap_dot_and_sharp(one_tetrimino, i_min);
 		printf("\n");
 		// min_coordinate_i(one_tetrimino);
 		// min_coordinate_j(one_tetrimino);
