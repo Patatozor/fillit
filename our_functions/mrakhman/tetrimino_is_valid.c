@@ -12,6 +12,20 @@
 
 #include "fillit.h"
 
+static int	tetrimino_has_4_points(char *s)
+{
+	int	counter;
+
+	counter = 0;
+	while (*s)
+	{
+		if (*s == '#')
+			counter++;
+		s++;
+	}
+	return ((counter == 4) ? 1 : 0);
+}
+
 int		tetrimino_is_valid(t_figure *f)
 {
 	int		counter;
