@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 11:20:19 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/18 17:07:26 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/24 20:07:38 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ t_figure	initialize_figure(char *str, int index)
 	}
 	pfig = &fig;
 	correct_points(pfig);
+	free(str);
 	return (fig);
 }

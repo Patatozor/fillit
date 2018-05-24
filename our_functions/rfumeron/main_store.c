@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_shapes.c                                     :+:      :+:    :+:   */
+/*   main_store.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/18 11:06:22 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/24 20:04:28 by rfumeron         ###   ########.fr       */
+/*   Created: 2018/05/24 20:31:46 by rfumeron          #+#    #+#             */
+/*   Updated: 2018/05/24 20:38:00 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fillit.h"
+#include "fillit.h"
 
-int	count_shapes(char *str)
+int	main_store(char **str, int count_shapes)
 {
-	size_t	len;
-	int		count;
+	t_figure	*shapes;
+	int			side_len;
 
-	len = ft_strlen(str);
-	count = len / 21 + 1;
-	if (count > 0 && count < 27)
-		return (count);
-	else
+	if ((shapes = store_shapes(str, count_shapes)) == NULL)
 		return (0);
+	if ((side_len = smallest_square_side(count_shapes)) == 0)
+		return (0);
+	return (solve(side_len, &shapes, count_shapes));
 }

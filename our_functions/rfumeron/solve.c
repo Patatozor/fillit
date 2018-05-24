@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_shapes.c                                     :+:      :+:    :+:   */
+/*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/18 11:06:22 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/24 20:04:28 by rfumeron         ###   ########.fr       */
+/*   Created: 2018/05/24 19:12:34 by rfumeron          #+#    #+#             */
+/*   Updated: 2018/05/24 19:47:14 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fillit.h"
+#include "fillit.h"
 
-int	count_shapes(char *str)
+int	solve(int side_len, t_figure *shapes)
 {
-	size_t	len;
-	int		count;
-
-	len = ft_strlen(str);
-	count = len / 21 + 1;
-	if (count > 0 && count < 27)
-		return (count);
-	else
-		return (0);
+	return (1);
 }
