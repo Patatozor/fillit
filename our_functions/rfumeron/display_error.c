@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_store.c                                       :+:      :+:    :+:   */
+/*   display_error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/24 20:31:46 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/25 02:34:15 by rfumeron         ###   ########.fr       */
+/*   Created: 2018/05/25 02:40:03 by rfumeron          #+#    #+#             */
+/*   Updated: 2018/05/25 02:41:00 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	main_store(char **str, int count_shapes)
+int	display_error(int ret)
 {
-	t_figure	*shapes;
-	int			side_len;
-
-	if ((shapes = store_shapes(str, count_shapes)) == NULL)
-	{
-		ft_putstr("error\n");
-		return (0);
-	}
-	if ((side_len = smallest_square_side(count_shapes)) == 0)
-		return (0);
-	return (solve(side_len, &shapes, count_shapes));
+	ft_putendl("error");
+	return (ret);
 }

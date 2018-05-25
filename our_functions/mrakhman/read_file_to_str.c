@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 18:26:35 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/18 15:28:10 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/25 02:46:00 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ char	*ret_file_string(char *filename)
 	int		fd;
 	int		read_ret;
 
-	file_str = malloc(sizeof(char));
+	if (!(file_str = malloc(sizeof(char))))
+		return (NULL);
 	file_str[0] = 0;
 	if ((fd = open(filename, O_RDONLY)) == -1)
-		return ("error");
+		return (NULL);
 	while ((read_ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		tmp = file_str;

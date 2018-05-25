@@ -6,25 +6,11 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/12 19:48:25 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/18 17:30:51 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/25 02:18:58 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-static int	tetrimino_has_4_points(char *s)
-{
-	int	counter;
-
-	counter = 0;
-	while (*s)
-	{
-		if (*s == '#')
-			counter++;
-		s++;
-	}
-	return ((counter == 4) ? 1 : 0);
-}
 
 int		tetrimino_is_valid(t_figure *f)
 {

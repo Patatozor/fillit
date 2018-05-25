@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_store.c                                       :+:      :+:    :+:   */
+/*   tetrimino_has_4_points.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/24 20:31:46 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/25 02:34:15 by rfumeron         ###   ########.fr       */
+/*   Created: 2018/05/25 02:17:25 by rfumeron          #+#    #+#             */
+/*   Updated: 2018/05/25 02:29:23 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	main_store(char **str, int count_shapes)
+int	tetrimino_has_4_points(char *s)
 {
-	t_figure	*shapes;
-	int			side_len;
+	int counter;
 
-	if ((shapes = store_shapes(str, count_shapes)) == NULL)
+	counter = 0;
+	while (*s)
 	{
-		ft_putstr("error\n");
-		return (0);
+		if (*s == '#')
+			counter++;
+		s++;
 	}
-	if ((side_len = smallest_square_side(count_shapes)) == 0)
-		return (0);
-	return (solve(side_len, &shapes, count_shapes));
+	return ((counter == 4) ? 1 : 0);
 }

@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 16:10:25 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/24 20:33:13 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/25 02:41:26 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ char			*ret_file_string(char *filename);
 char			**initialize_field(int sqr_len);
 int				smallest_square_side(int tetrimino_count);
 int				error_check(char *str);
+int				display_error(int ret);
 int				count_shapes(char *str);
+int				tetrimino_has_4_points(char *s);
 int				main_store(char *str, int count_shapes);
 int				solve(int side_len, t_figure **shapes, int count_shapes);
 void			correct_points(t_figure *pfigure);
