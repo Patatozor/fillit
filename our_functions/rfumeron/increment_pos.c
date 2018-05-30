@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_shape.c                                        :+:      :+:    :+:   */
+/*   increment_pos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/24 19:08:29 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/30 21:40:27 by rfumeron         ###   ########.fr       */
+/*   Created: 2018/05/30 21:40:34 by rfumeron          #+#    #+#             */
+/*   Updated: 2018/05/30 21:47:05 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	add_shape(char **grid, t_figure f, t_point *pos, int len)
+int	increment_pos(t_point *pos, t_limits *l)
 {
-	int	i;
-	t_point	*p;
-
-	i = -1;
-	if ((pos->x + f->xmax) > len || (pos->y + f->ymax) > len)
-		return (0);
-	while (++i < 4)
+	if (p->x < l->slen)
 	{
-		p = (f->p)[i];
-		if (grid[p->x + pos->x][p->y + pos->y] != '.')
-			return (0);
+		p->x++;
+		return (1);
 	}
-	while (--i >= 0)
+	if (p->y < l->slen)
 	{
-		p = (f->p)[i];
-		grid[p->x + pos->x][p->y + pos->y] = f->letter;;
+		p->x = 0;
+		p->y++;
+		return (1);
 	}
-	return (1);
+	return (0);
 }
