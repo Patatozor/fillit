@@ -6,12 +6,12 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 16:03:02 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/18 15:26:17 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/30 19:33:04 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "fillit.h"
+#include "mfillit.h"
 
 int	main(int argc, char **argv)
 {
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	str = NULL;
-	str = (ret_file_string(argv[1]));
+	str = (read_file_to_str(argv[1]));
 	printf("%s\n", str);
 // printf("%d\n", smallest_square_side(27));
 	// printf("wrong_symbols: \t\t%d\n", wrong_symbols(str));

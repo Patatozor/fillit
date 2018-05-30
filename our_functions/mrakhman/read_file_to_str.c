@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 18:26:35 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/25 02:46:00 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/30 17:14:29 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** and stores it in a single string *file_str
 */
 
-char	*ret_file_string(char *filename)
+char	*read_file_to_string(char *filename)
 {
 	char	*file_str;
 	char	*tmp;
