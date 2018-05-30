@@ -6,14 +6,14 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/20 21:18:21 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/22 22:26:20 by mrakhman         ###   ########.fr       */
+/*   Updated: 2018/05/30 19:34:01 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "mfillit.h"
 #include <stdio.h>
 
-char	*ret_file_string(char *filename)
+char	*read_file_to_str(char *filename)
 {
 	char	*file_str;
 	char	*tmp;
@@ -57,7 +57,7 @@ int		get_nb_tetrimino(char *str)
 // 	char *str;
 // 	char **array;
 
-// 	str = ret_file_string(filename);
+// 	str = read_file_to_str(filename);
 // 	array = ft_strsplit(str, '\n');
 // 	return(array);
 // }
@@ -72,9 +72,7 @@ char **get_one_tetrimino(char **str)
 	return (0);
 }
 
-//t_tetrimino	*arrange_array(t_tetrimino *start)
-
-t_coordinate min_coordinate(char **str)
+t_coordinate min_coordinate(char **tetrimino)
 {
 	int i;
 	int j;
@@ -88,58 +86,31 @@ t_coordinate min_coordinate(char **str)
 		j = 0;
 		while (j < 4)
 		{
-			if (str[i][j] == '#')
+			if (tetrimino[i][j] == '#')
 			{
-				coord.x = j < coord.x ? j : coord.x;
-				coord.y = i < coord.y ? i : coord.y;
+				coord.y = j < coord.y ? j : coord.y;
+				coord.x = i < coord.x ? i : coord.x;
 			}
 			j++;
 		}
 		i++;
 	}
-	printf("(%d; %d)\n", coord.x, coord.y); // !!!!!!!!!!!!!!!!!!!!!!!
 	return (coord);
 }
 
-// int min_coordinate_i(char **str)
-// {
-// 	int i;
-// 	int j;
-// 	int i_min;
-
-// 	i = 0;
-// 	i_min = 10;
-// 	while (str[i] && i < 4)
-// 	{
-// 		j = 0;
-// 		while (str[i][j])
-// 		{
-// 			if (str[i][j] == '#' && i < i_min)
-// 			{
-// 				i_min = i;
-// 				printf("(i_min = %d)\n", i_min); // !!!!!!!!!!!!!!
-// 				return (i_min);
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (i_min);
-// }
-
-void move_upper_left(char **str)
+void move_upper_left(char **tetrimino)
 {
 	int i;
 	int j;
 	t_coordinate coord;
 
-	coord = min_coordinate(str);
+	coord = min_coordinate(tetrimino);
 	i = 0;
-	while (coord.y + i < 4)
+	while (coord.x + i < 4)
 	{
 		j = -1;
-		while (coord.x + ++j < 4)
-			str[i][j] = str[coord.y + i][coord.x + j];
+		while (coord.y + ++j < 4)
+			tetrimino[i][j] = tetrimino[coord.x + i][coord.y + j];
 		i++;
 	}
 	i = 0;
@@ -148,19 +119,70 @@ void move_upper_left(char **str)
 		j = -1;
 		while (++j < 4)
 		{
-			if (i >= 4 - coord.y || j >= 4 - coord.x)
-				str[i][j] = '.';
+			if (i >= 4 - coord.x || j >= 4 - coord.y)
+				tetrimino[i][j] = '.';
 		}
 		i++;
 	}
 }
 
-t_tetrimino *parse(char *str)
+int get_width(char **tetrimino)
+{
+	int i;
+	int j;
+	int max_j;
+	int width;
+
+	i = 0;
+	width = 0;
+	while (i < 4)
+	{
+		j = 0;
+		max_j = 0;
+		while (j < 4)
+		{
+			if (tetrimino[i][j] == '#')
+				max_j++;
+			j++;
+		}
+		width = max_j > width ? max_j : width;
+		i++;
+	}
+	return (width);
+}
+
+int get_heith(char **tetrimino)
+{
+	int i;
+	int j;
+	int heith;
+
+	i = 0;
+	heith = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			if (tetrimino[i][j] == '#')
+			{
+				heith++;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (heith);
+}
+
+t_tetrimino *parse_file(char *str)
 {
 	t_tetrimino *ttr;
 	int nb_ttr;
 	char **array;
 	int i;
+	int ii; // delete 1
 
 	nb_ttr = get_nb_tetrimino(str);
 	ttr = malloc(sizeof(t_tetrimino) * (nb_ttr + 1));
@@ -169,10 +191,24 @@ t_tetrimino *parse(char *str)
 	while (i < nb_ttr)
 	{
 		ttr[i].tetrimino = get_one_tetrimino(array);
+		ii = 0; // delete 2
+		while (ii < 4) // delete 3
+	 	{ // delete
+			printf("%s\n", ttr[i].tetrimino[ii]); // delete 4
+	 		ii++; // delete 5
+	 	} // delete 6
 		move_upper_left(ttr[i].tetrimino);
 		ttr[i].letter = i + 'A';
-		ttr[i].height = 0; // ALARM! TODO!
-		ttr[i].width = 0; // ALARM! TODO!
+		ttr[i].height = get_heith(ttr[i].tetrimino);
+		ttr[i].width = get_width(ttr[i].tetrimino);
+		printf("%c | (%d by %d)\n", ttr[i].letter, ttr[i].height, ttr[i].width); // delete 7
+		ii = 0; // delete 8
+		while (ii < 4) // delete 9
+	 	{ // delete
+			printf("%s\n", ttr[i].tetrimino[ii]); // delete 10
+	 		ii++; // delete 11
+	 	} // delete 12
+	 	printf("\n"); // delete 13
 		i++;
 	}
 	return (ttr);
@@ -182,41 +218,19 @@ t_tetrimino *parse(char *str)
 
 int	main(int argc, char **argv)
 {
-	char	**file;
-	char	**one_tetrimino;
+	char 	*file_str;
+	t_tetrimino *array_file;
 	int i;
 
 	i = 0;
-
 	if (argc != 2)
 	{
-		ft_putstr("error");
-		ft_putchar('\n');
+		ft_putstr("error\n");
 		return (0);
 	}
-	// file = read_to_array(argv[1]);
-	// one_tetrimino = get_one_tetrimino(file);
+	file_str = read_file_to_str(argv[1]);
+	array_file = parse_file(file_str);
 
-	// move_upper_left(one_tetrimino, min_coordinate_i(one_tetrimino), min_coordinate_j(one_tetrimino));
-
-
-
-	// while (one_tetrimino)
-	// {
-	// 	while (i < 4)
-	// 	{
-	// 		printf("%s\n", one_tetrimino[i]);
-	// 		i++;
-	// 	}
-	// 	if (!one_tetrimino[i])
-	// 		return (0);
-	// 	one_tetrimino = get_one_tetrimino(file);
-	// move_upper_left(one_tetrimino, min_coordinate_i(one_tetrimino), min_coordinate_j(one_tetrimino));
-	// 	printf("\n");
-	// 	// min_coordinate_i(one_tetrimino);
-	// 	// min_coordinate_j(one_tetrimino);
-	// 	i = 0;
-	// }
 
 	return (0);
 }
