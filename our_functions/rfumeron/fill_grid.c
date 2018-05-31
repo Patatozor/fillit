@@ -13,18 +13,19 @@
 
 #include "fillit.h"
 
-int	fill_grid(t_point *p, t_figure **f, char ***grid, t_limits *l)
+int	fill_grid(t_point *p, t_figure *f, char ***grid, t_limits *l)
 {
-	if (l->index == l->count_shapes + 1)
+	if (l->index == l->count_shapes)
 		return (1);
-	if ((add_shape(grid, f[l->index], p, l->slen) == 1))
+	else if ((add_shape(grid, &f[l->index], *p, l->slen) == 1))
 	{
 		l->index++;
 		p->x = 0;
 		p->y = 0;
 		return (fill_grid(p, f, grid, l));
 	}
-	if (increment_pos(p, l))
-		return (fill_grid(p, f, grid, l));		
-	return (0);
+	else if (increment_pos(p, l))
+		return (fill_grid(p, f, grid, l));
+	else
+		return (0);
 }

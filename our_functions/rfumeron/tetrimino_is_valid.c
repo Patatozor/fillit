@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/12 19:48:25 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/31 04:27:08 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/31 17:06:22 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	count_connections_point(t_figure *f, int i)
 	counter = 0;
 	j = i;
 	p = (f->p)[i];
-	while (++j < 3)
+	while (++j <= 3)
 	{
 		if (p.x == ((f->p)[j]).x)
 		{

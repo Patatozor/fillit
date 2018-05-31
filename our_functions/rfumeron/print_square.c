@@ -6,7 +6,7 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 19:08:17 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/31 04:23:21 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/31 18:27:07 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_square(char **grid, int len)
 	{
 		j = -1;
 		while (++j < len)
-			ft_putchar(grid[i][j++]);
+			ft_putchar(grid[i][j]);
 		ft_putchar('\n');
 	}
 }
