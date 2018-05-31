@@ -15,6 +15,8 @@
 
 int	fill_grid(t_point *p, t_figure *f, char ***grid, t_limits *l)
 {
+	ft_putnbr(l->index);
+	ft_putchar('\n');
 	if (l->index == l->count_shapes)
 		return (1);
 	else if ((add_shape(grid, &f[l->index], *p, l->slen) == 1))
