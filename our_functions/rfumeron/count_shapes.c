@@ -6,11 +6,11 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 11:06:22 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/24 20:04:28 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/31 04:48:28 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fillit.h"
+#include "fillit.h"
 
 int	count_shapes(char *str)
 {

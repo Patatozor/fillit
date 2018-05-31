@@ -6,30 +6,32 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 19:08:29 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/30 21:40:27 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/31 04:51:14 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	add_shape(char **grid, t_figure f, t_point *pos, int len)
+int	add_shape(char ***grid, t_figure *f, t_point *p, int len)
 {
-	int	i;
-	t_point	*p;
+	int		i;
+	t_point	pt;
+	char	**g;
 
 	i = -1;
-	if ((pos->x + f->xmax) > len || (pos->y + f->ymax) > len)
+	g = *grid;
+	if ((p->x + f->xmax) > len || (p->y + f->ymax) > len)
 		return (0);
 	while (++i < 4)
 	{
-		p = (f->p)[i];
-		if (grid[p->x + pos->x][p->y + pos->y] != '.')
+		pt = (f->p)[i];
+		if (g[pt.x + p->x][pt.y + p->y] != '.')
 			return (0);
 	}
 	while (--i >= 0)
 	{
-		p = (f->p)[i];
-		grid[p->x + pos->x][p->y + pos->y] = f->letter;;
+		pt = (f->p)[i];
+		g[pt.x + p->x][pt.y + p->y] = f->letter;;
 	}
 	return (1);
 }

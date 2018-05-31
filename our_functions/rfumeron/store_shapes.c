@@ -6,11 +6,11 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 11:07:57 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/25 02:31:19 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/31 04:32:32 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fillit.h"
+#include "fillit.h"
 
 t_figure	*store_shapes(char **str, int count_shapes)
 {
@@ -19,11 +19,11 @@ t_figure	*store_shapes(char **str, int count_shapes)
 	t_figure	*shapes_table;
 
 	i = 0;
-	if (!(shapes_table = malloc(sizeof(t_figure) * shapes)))
+	if (!(shapes_table = malloc(sizeof(t_figure) *count_shapes)))
 		return (NULL);
-	while (i < shapes)
+	while (i < count_shapes)
 	{
-		str_chunk = ft_strsub(str, i * 21, 20);
+		str_chunk = ft_strsub(*str, i * 21, 20);
 		if (!tetrimino_has_4_points(str_chunk))
 			return (NULL);
 		shapes_table[i] = initialize_figure(str_chunk, i);

@@ -6,11 +6,11 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 11:58:42 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/18 17:21:46 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/31 02:27:13 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fillit.h"
+#include "fillit.h"
 
 void	correct_points(t_figure *pfig)
 {

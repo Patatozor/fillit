@@ -6,11 +6,11 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 12:11:32 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/30 20:11:43 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/31 02:24:58 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fillit.h"
+#include "fillit.h"
 
 char	**initialize_field(int sqr_len)
 {

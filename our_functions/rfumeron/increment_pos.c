@@ -6,13 +6,13 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 21:40:34 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/30 21:47:05 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/31 04:38:43 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	increment_pos(t_point *pos, t_limits *l)
+int	increment_pos(t_point *p, t_limits *l)
 {
 	if (p->x < l->slen)
 	{

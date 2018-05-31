@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_figure.c                                :+:      :+:    :+:   */
+/*   read_file_to_array.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/18 11:20:19 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/31 04:40:42 by rfumeron         ###   ########.fr       */
+/*   Created: 2018/05/20 21:18:21 by mrakhman          #+#    #+#             */
+/*   Updated: 2018/05/31 02:24:38 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_figure	initialize_figure(char *str, int index)
+char	*read_file_to_str(char *filename)
 {
-	t_figure	fig;
-	t_figure	*pfig;
-	int			i;
+	char	*file_str;
+	char	*tmp;
+	char	buf[BUFF_SIZE + 1];
+	int		fd;
+	int		read_ret;
 
-	i = 0;
-	fig.xmax = 0;
-	fig.ymax = 0;
-	fig.letter = 'A' + index;
-	while (i < 4)
+	file_str = malloc(sizeof(char));
+	file_str[0] = 0;
+	if ((fd = open(filename, O_RDONLY)) == -1)
+		return ("error");
+	while ((read_ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		(fig.p)[i] = initialize_point(str, i);
-		i++;
+		tmp = file_str;
+		buf[read_ret] = 0;
+		file_str = ft_strjoin(file_str, buf);
+		free(tmp);
 	}
-	pfig = &fig;
-	correct_points(pfig);
-	return (fig);
+	close(fd);
+	return (file_str);
 }

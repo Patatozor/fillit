@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_figure.c                                :+:      :+:    :+:   */
+/*   smallest_square_side.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/18 11:20:19 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/31 04:40:42 by rfumeron         ###   ########.fr       */
+/*   Created: 2018/05/16 19:45:06 by mrakhman          #+#    #+#             */
+/*   Updated: 2018/05/17 20:47:18 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_figure	initialize_figure(char *str, int index)
-{
-	t_figure	fig;
-	t_figure	*pfig;
-	int			i;
+/*
+** Function calculates the smallest square for N Tetriminos.
+** It should be increased by 1 in a loop
+*/
 
-	i = 0;
-	fig.xmax = 0;
-	fig.ymax = 0;
-	fig.letter = 'A' + index;
-	while (i < 4)
+int	smallest_square_side(int tetrimino_count)
+{
+	int	side_len;
+
+	side_len = 0;
+	if (tetrimino_count > 0 && tetrimino_count <= 26)
 	{
-		(fig.p)[i] = initialize_point(str, i);
-		i++;
+		while ((side_len * side_len) < (tetrimino_count * 4))
+			side_len++;
+		return (side_len);
 	}
-	pfig = &fig;
-	correct_points(pfig);
-	return (fig);
+	return (0);
 }
