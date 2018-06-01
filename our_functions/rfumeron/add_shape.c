@@ -6,7 +6,7 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 19:08:29 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/31 19:39:22 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/01 15:00:29 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	add_shape(char ***grid, t_figure *f, t_point p, int len)
 
 	i = -1;
 	g = *grid;
-	if ((p.x + f->xmax) > len || (p.y + f->ymax) > len)
+	if ((p.x + f->xmax) >= len || (p.y + f->ymax) >= len)
 		return (0);
 	while (++i < 4)
 	{

@@ -6,7 +6,7 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 19:12:34 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/31 19:40:26 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/01 14:47:53 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	solve(int slen, t_figure *f, int count_shapes)
 	}
 	else
 	{
-		free(grid);
+		free_grid(&grid, slen);
 		solve(slen + 1, f, count_shapes);
 	}
 }

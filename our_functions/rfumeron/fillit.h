@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 16:10:25 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/05/31 19:31:01 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/01 14:52:36 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ int				count_shapes(char *str);
 int				tetrimino_has_4_points(char *s);
 int				tetrimino_is_valid(t_figure *f);
 int				main_store(char **str, int count_shapes);
-void			solve(int side_len, t_figure *shapes, int count_shapes);
 int				fill_grid(t_point *p, t_figure *f, char ***grid, t_limits *l);
 int				increment_pos(t_point *p, t_limits *l);
 int				add_shape(char ***grid, t_figure *f, t_point p, int len);
 void			correct_points(t_figure *pfigure);
 void			print_square(char **grid, int len);
+void			solve(int side_len, t_figure *shapes, int count_shapes);
+void			free_grid(char ***grid, int slen);
 t_figure		*store_shapes(char **str, int count_shapes);
 t_figure		initialize_figure(char *str, int index);
 t_point			initialize_point(char *str, int index);
