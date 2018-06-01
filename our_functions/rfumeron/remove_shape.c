@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve.c                                            :+:      :+:    :+:   */
+/*   remove_shape.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/24 19:12:34 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/06/01 17:58:51 by rfumeron         ###   ########.fr       */
+/*   Created: 2018/06/01 17:14:22 by rfumeron          #+#    #+#             */
+/*   Updated: 2018/06/01 19:11:02 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
-void	solve(int slen, t_figure *f, int count_shapes)
+void	remove_shape(char ***grid, t_figure *f, int slen)
 {
-	char 		**grid;
-	t_limits	l;
-	t_point		pos;
+	int		i;
+	int		j;
+	char	letter;
+	char	**g;
 
-	grid = initialize_field(slen);
-	l.count_shapes = count_shapes;
-	l.index = 0;
-	l.slen = slen;
-	pos = new_point();
-	if ((fill_grid(&pos, f, &grid, &l) == 1))
+	i = -1;
+	g = *grid;
+	letter = f->letter;
+	print_square(*grid, slen);
+	while (++i < slen)
 	{
-		print_square(grid, slen);
-		return ;
+		j = -1;
+		while (++j < slen)
+		{
+			if (g[i][j] == letter)
+				g[i][j] = '.';
+		}
 	}
-	else
-	{
-		free_grid(&grid, slen);
-		solve(slen + 1, f, count_shapes);
-	}
+	ft_putchar('\n');
+	print_square(*grid, slen);
+	ft_putchar('\n');
+	ft_putchar('\n');
+	ft_putchar('\n');
 }
