@@ -21,9 +21,7 @@ points_functions \
 read_file_to_str \
 solve \
 store_shapes_functions \
-tetrimino_is_valid \
-main
-
+tetrimino_is_valid
 
 FLAGS = -Wall -Wextra -Werror -I.
 
@@ -42,7 +40,7 @@ $(O_FILE): $(LIBFT)
 	$(CC) $(FLAGS) -c $(addsuffix .c,$(SRC))
 
 $(LIBFT):
-		make -C ./libft/
+	make -C ./libft/
 
 clean:
 	rm -f $(O_FILE)
