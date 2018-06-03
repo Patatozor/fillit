@@ -17,12 +17,9 @@ tetrimino_is_valid \
 
 
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -I.
 
-INC = -I.
-
-OBJ = $(addsuffix .o,$(FUNCTIONS))
-
+O_FILE = $(addsuffix .o,$(FUNCTIONS))
 
 LIBFT =	libft/libft.a
 
@@ -30,21 +27,21 @@ CC = gcc
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT)
+$(NAME): $(LIBFT) $(O_FILE)
+	$(CC) $(FLAGS) $(O_FILE) $(LIBFT) -o $(NAME)
 
-$(OBJ): $(LIBFT)
+$(O_FILE): $(LIBFT)
 	$(CC) $(FLAGS) -c $(FUNCTIONS)
 
 $(LIBFT):
 		make -C ./libft/
 
 clean:
-	rm -f $(OBJ)
-			make clean -C ./libft/
+	rm -f $(O_FILE)
+	make clean -C ./libft/
 
 fclean: clean
-	rm -f $(NAME)
-			make fclean -C ./libft/
+	rm -f $(NAME) $(O_FILE)
+	make fclean -C ./libft/
 
 re: fclean all
