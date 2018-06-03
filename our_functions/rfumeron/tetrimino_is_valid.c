@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/12 19:48:25 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/31 17:06:22 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/03 17:51:04 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,18 @@ int			tetrimino_is_valid(t_figure *f)
 	counter += count_connections_point(f, 1);
 	counter += count_connections_point(f, 2);
 	return ((counter == 6 || counter == 8) ? 1 : 0);
+}
+
+int	tetrimino_has_4_points(char *s)
+{
+	int counter;
+
+	counter = 0;
+	while (*s)
+	{
+		if (*s == '#')
+			counter++;
+		s++;
+	}
+	return ((counter == 4) ? 1 : 0);
 }

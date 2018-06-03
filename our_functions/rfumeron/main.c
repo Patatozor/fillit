@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 14:53:04 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/05/31 17:42:04 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/03 18:03:54 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ int	main(int argc, char **argv)
 		return (display_error(0));
 	}
 	return (1);
+}
+
+int	display_error(int ret)
+{
+	ft_putendl("error");
+	return (ret);
 }

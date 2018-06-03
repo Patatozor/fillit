@@ -1,42 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_grid.c                                        :+:      :+:    :+:   */
+/*   grid_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/30 20:10:28 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/06/03 17:41:40 by rfumeron         ###   ########.fr       */
+/*   Created: 2018/06/03 18:00:54 by rfumeron          #+#    #+#             */
+/*   Updated: 2018/06/03 18:01:22 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	fill_grid(t_figure *fig, char ***grid, int slen)
+void	free_grid(char ***grid, int slen)
 {
-	t_point		p;
-	t_figure	f;
-	
-	f = *fig;
-	p.y = 0;
-	if (f.xmax  == -1)
-		return (1);
-	while (p.y < slen)
+	int	i;
+	char **g;
+
+	i = -1;
+	g = *grid;
+	while (++i < slen)
 	{
-		p.x = 0;
-		while (p.x < slen)
-		{
-			if ((can_add_shape(grid, f, p, slen)) == 1)
-			{
-				add_shape(grid, f, p);
-				if (fill_grid(fig + 1, grid, slen) == 1)
-					return (1);
-				else
-					remove_shape(grid, f, p);
-			}
-			p.x++;
-		}
-		p.y++;
+		free(g[i]);
 	}
-	return (0);
+	free(g);
+}
+
+char	**initialize_field(int sqr_len)
+{
+	char	**grid;
+	int		y;
+
+	y = 0;
+	grid = NULL;
+	if (!(grid = malloc(sizeof(char *) * sqr_len)))
+		return (NULL);
+	while (y < sqr_len)
+	{
+		if (!(grid[y] = malloc(sizeof(char) * sqr_len)))
+			return (NULL);
+		ft_memset(grid[y], '.', sqr_len);
+		y++;
+	}
+	return (grid);
 }

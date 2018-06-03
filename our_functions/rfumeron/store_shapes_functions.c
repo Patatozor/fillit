@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   store_shapes.c                                     :+:      :+:    :+:   */
+/*   store_shapes_functions.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/18 11:07:57 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/06/03 17:16:18 by rfumeron         ###   ########.fr       */
+/*   Created: 2018/06/03 18:02:01 by rfumeron          #+#    #+#             */
+/*   Updated: 2018/06/03 18:02:03 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,10 @@ t_figure	initialize_figure(char *str, int index)
 	fig.xmax = 0;
 	fig.ymax = 0;
 	fig.letter = 'A' + index;
-	while (i < 4)
-	{
-		(fig.p)[i] = initialize_point(str, i);
-		i++;
-	}
+	(fig.p)[0] = initialize_point(str, 0);
+	(fig.p)[1] = initialize_point(str, 1);
+	(fig.p)[2] = initialize_point(str, 2);
+	(fig.p)[3] = initialize_point(str, 3);
 	pfig = &fig;
 	correct_points(pfig);
 	return (fig);
@@ -81,4 +80,23 @@ t_figure	end_shape(void)
 	fig.p[2] = new_point();
 	fig.p[3] = new_point();
 	return (fig);
+}
+
+/*
+ * ** Function calculates the smallest square for N Tetriminos.
+ * ** It should be increased by 1 in a loop
+ * */
+
+int	smallest_square_side(int tetrimino_count)
+{
+	int	side_len;
+
+	side_len = 0;
+	if (tetrimino_count > 0 && tetrimino_count <= 26)
+	{
+		while ((side_len * side_len) < (tetrimino_count * 4))
+			side_len++;
+		return (side_len);
+	}
+	return (0);
 }
