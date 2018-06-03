@@ -6,13 +6,13 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/03 18:02:01 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/06/03 18:02:03 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/03 18:21:44 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	main_store(char **str, int count_shapes)
+int			main_store(char **str, int count_shapes)
 {
 	t_figure	*shapes;
 	int			side_len;
@@ -85,9 +85,9 @@ t_figure	end_shape(void)
 /*
  * ** Function calculates the smallest square for N Tetriminos.
  * ** It should be increased by 1 in a loop
- * */
+*/
 
-int	smallest_square_side(int tetrimino_count)
+int			smallest_square_side(int tetrimino_count)
 {
 	int	side_len;
 

@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 22:04:52 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/06/03 18:03:10 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/03 18:21:59 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ static int	gap_between_figures(char *str)
 	return (1);
 }
 
-int	error_check(char *str)
+int			error_check(char *str)
 {
 	if (wrong_symbols(str) == 0)
 		return (0);

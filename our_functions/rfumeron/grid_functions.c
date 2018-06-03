@@ -6,7 +6,7 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/03 18:00:54 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/06/03 18:01:22 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/03 18:19:26 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	free_grid(char ***grid, int slen)
 {
-	int	i;
-	char **g;
+	int		i;
+	char	**g;
 
 	i = -1;
 	g = *grid;

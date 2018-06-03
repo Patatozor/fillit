@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 16:10:25 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/06/03 17:57:38 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/03 18:18:43 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 # include <stdlib.h>
 # include <sys/stat.h>
 # include "libft.h"
-
-// # define FILE_ERROR (-1)
-// # define MALLOC_ERROR (-2)
-// # define CAT_ERROR (-3)
 
 typedef	struct	s_point
 {
