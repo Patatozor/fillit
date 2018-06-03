@@ -12,14 +12,22 @@
 
 NAME = fillit
 
-FUNCTIONS = main \
+SRC = main \
+add_shape \
+count_shapes \
+error_check \
+grid_functions \
+points_functions \
+read_file_to_str \
+solve \
+store_shapes_functions \
 tetrimino_is_valid \
-
+main
 
 
 FLAGS = -Wall -Wextra -Werror -I.
 
-O_FILE = $(addsuffix .o,$(FUNCTIONS))
+O_FILE = $(addsuffix .o,$(SRC))
 
 LIBFT =	libft/libft.a
 
@@ -31,7 +39,7 @@ $(NAME): $(LIBFT) $(O_FILE)
 	$(CC) $(FLAGS) $(O_FILE) $(LIBFT) -o $(NAME)
 
 $(O_FILE): $(LIBFT)
-	$(CC) $(FLAGS) -c $(FUNCTIONS)
+	$(CC) $(FLAGS) -c $(addsuffix .c,$(SRC))
 
 $(LIBFT):
 		make -C ./libft/
