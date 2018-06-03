@@ -120,6 +120,10 @@ static int	gap_between_figures(char *str)
 	return (1);
 }
 
+/*
+** This function summs up all previous error check functions and calls them
+*/
+
 int	error_check(char *str)
 {
 	if (wrong_symbols(str) == 0)
