@@ -6,7 +6,7 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 19:08:29 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/06/03 17:21:02 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/03 17:23:25 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	add_shape(char ***grid, t_figure f, t_point p)
 void	remove_shape(char ***grid, t_figure f, t_point p)
 {
 	int		i;
+	t_point	pt;
 	char	**g;
 
 	i = -1;

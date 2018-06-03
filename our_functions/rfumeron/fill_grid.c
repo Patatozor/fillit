@@ -6,7 +6,7 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 20:10:28 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/06/03 17:21:40 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/03 17:41:40 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,25 @@ int	fill_grid(t_figure *fig, char ***grid, int slen)
 	t_figure	f;
 	
 	f = *fig;
-	p.x = 0;
+	p.y = 0;
 	if (f.xmax  == -1)
 		return (1);
-	while (p.x < slen)
+	while (p.y < slen)
 	{
-		p.y = 0;
-		while (p.y < slen)
+		p.x = 0;
+		while (p.x < slen)
 		{
 			if ((can_add_shape(grid, f, p, slen)) == 1)
 			{
 				add_shape(grid, f, p);
-				print_square(*grid, slen);
-				ft_putchar('\n');
-				fill_grid(fig++, grid, slen);
-				remove_shape(grid, f, p);
+				if (fill_grid(fig + 1, grid, slen) == 1)
+					return (1);
+				else
+					remove_shape(grid, f, p);
 			}
-			p.y++;
+			p.x++;
 		}
-		p.x++;
+		p.y++;
 	}
 	return (0);
 }
