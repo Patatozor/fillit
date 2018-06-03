@@ -22,6 +22,11 @@ int	main(int argc, char **argv)
 	str = (read_file_to_str(argv[1]));
 	if (str == NULL)
 		return (display_error(0));
+	if (error_check(str) == 0)
+	{
+		free(str);
+		return (display_error(0));
+	}
 	countshapes = count_shapes(str);
 	if (countshapes == 0)
 	{
