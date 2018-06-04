@@ -6,17 +6,13 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 22:04:52 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/06/03 18:21:59 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/05/30 19:33:06 by mrakhman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-/*
-** Function checks if all string elements are just '.' || '#' || '\n'
-*/
-
-static int	wrong_symbols(char *str)
+int	wrong_symbols(char *str)
 {
 	int	i;
 
@@ -30,11 +26,7 @@ static int	wrong_symbols(char *str)
 	return (1);
 }
 
-/*
-** Function checks if Tetrimino is = 4 symbols wide (before \n)
-*/
-
-static int	len_4_symbols(char *str)
+int	len_4_symbols(char *str)
 {
 	int	i;
 	int	symbol_count;
@@ -56,71 +48,53 @@ static int	len_4_symbols(char *str)
 	return (1);
 }
 
-/*
-** Function checks if Tetrimino is = 4 lines long
-*/
-
-static int	height_4_lines(char *str)
+int	height_4_lines(char *str)
 {
-	int	i;
-	int	line_count;
+	int		i;
+	int		j;
+	int		nb_tetri;
+	int		line_count;
+	char	*one_tetri;
 
+	nb_tetri = get_nb_tetrimino(str);
 	i = 0;
-	line_count = 0;
-	while (str[i])
+	while (i < nb_tetri)
 	{
-		while (str[i] != '\n')
-			i++;
-		if (str[i] == '\n' && str[i - 1] != '\n')
+		one_tetri = ft_strsub(str, i * 21, 20);
+		line_count = 0;
+		j = 0;
+		while (one_tetri[j])
 		{
-			line_count++;
-			i++;
+			if (one_tetri[j] == '\n')
+				line_count++;
+			j++;
 		}
-		if ((str[i] == '\n' && str[i - 1] == '\n') || \
-			(str[i] == '\0' && str[i - 1] == '\n'))
-		{
-			i++;
-			if (line_count != 4)
-				return (0);
-			line_count = 0;
-		}
-	}
-	return (1);
-}
-
-/*
-** Function checks that it's only 1 gap line between Tetriminos
-*/
-
-static int	gap_between_figures(char *str)
-{
-	int	i;
-	int	gap_count;
-
-	i = 0;
-	gap_count = 0;
-	if (str[0] == '\n')
-		return (0);
-	while (str[i])
-	{
-		while (str[i] != '\n')
-			i++;
-		if (str[i] == '\n' && str[i - 1] != '\n')
-			i++;
-		while ((str[i] == '\n' && str[i - 1] == '\n') || \
-		(str[i] == '\0' && str[i - 1] == '\n'))
-		{
-			gap_count++;
-			i++;
-		}
-		if (gap_count > 1)
+		if (line_count != 4)
 			return (0);
-		gap_count = 0;
+		i++;
 	}
 	return (1);
 }
 
-int			error_check(char *str)
+int	gap_between_figures(char *str)
+{
+	int		i;
+	int		nb_tetri;
+	char	*one_tetri;
+
+	nb_tetri = get_nb_tetrimino(str);
+	i = 0;
+	while (i < nb_tetri)
+	{
+		one_tetri = ft_strsub(str, i * 21, 21);
+		if (one_tetri[20] != '\n' && one_tetri[20] != '\0')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	error_check(char *str)
 {
 	if (wrong_symbols(str) == 0)
 		return (0);

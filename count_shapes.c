@@ -24,3 +24,19 @@ int	count_shapes(char *str)
 	else
 		return (0);
 }
+
+int	get_nb_tetrimino(char *str)
+{
+	int i;
+	int nb_tetri;
+
+	i = 0;
+	nb_tetri = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '\n' && (str[i + 1] == '\n' || str[i + 1] == '\0'))
+			nb_tetri++;
+		i++;
+	}
+	return (nb_tetri);
+}
