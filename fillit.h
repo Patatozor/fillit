@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 16:10:25 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/06/04 16:32:30 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/04 19:35:52 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/stat.h>
-# include "libft.h"
+# include "libft/libft.h"
 
 typedef	struct	s_point
 {
@@ -32,11 +32,6 @@ typedef struct	s_figure
 	int		ymax;
 	char	letter;
 }				t_figure;
-
-typedef struct	s_limits
-{
-	int			slen;
-}				t_limits;
 
 char			*read_file_to_str(char *filename);
 char			**initialize_field(int sqr_len);

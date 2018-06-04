@@ -6,7 +6,7 @@
 /*   By: mrakhman <mrakhman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 14:53:04 by mrakhman          #+#    #+#             */
-/*   Updated: 2018/06/04 16:26:02 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/04 19:36:28 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	int			countshapes;
 
 	if (argc != 2)
-		return (display_error(0));
+		return (display_error(1));
 	str = (read_file_to_str(argv[1]));
 	if (str == NULL)
 		return (display_error(0));
@@ -43,6 +43,9 @@ int	main(int argc, char **argv)
 
 int	display_error(int ret)
 {
-	ft_putendl("error");
-	return (ret);
+	if (ret == 1)
+		ft_putendl("usage: ./fillit input_file");
+	else
+		ft_putendl("error");
+	return (0);
 }
