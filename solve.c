@@ -6,7 +6,7 @@
 /*   By: rfumeron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 19:12:34 by rfumeron          #+#    #+#             */
-/*   Updated: 2018/06/03 18:20:57 by rfumeron         ###   ########.fr       */
+/*   Updated: 2018/06/04 16:46:28 by rfumeron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,19 @@ int		fill_grid(t_figure *fig, char ***grid, int slen)
 
 	f = *fig;
 	p.y = 0;
+	p.x = 0;
 	if (f.xmax == -1)
 		return (1);
-	while (p.y < slen)
+	while (p.y * slen + p.x < slen * slen - 3)
 	{
-		p.x = 0;
-		while (p.x < slen)
+		if ((can_add_shape(grid, f, p, slen)) == 1)
 		{
-			if ((can_add_shape(grid, f, p, slen)) == 1)
-			{
-				add_shape(grid, f, p);
-				if (fill_grid(fig + 1, grid, slen) == 1)
-					return (1);
-				else
-					remove_shape(grid, f, p);
-			}
-			p.x++;
+			if (fill_grid(fig + 1, grid, slen) == 1)
+				return (1);
+			else
+				remove_shape(grid, f, p);
 		}
-		p.y++;
+		increment_pos(&p, slen);
 	}
 	return (0);
 }
@@ -70,5 +65,16 @@ void	print_square(char **grid, int len)
 		while (++j < len)
 			ft_putchar(grid[j][i]);
 		ft_putchar('\n');
+	}
+}
+
+void	increment_pos(t_point *p, int slen)
+{
+	if (p->x + 1 < slen)
+		p->x++;
+	else
+	{
+		p->x = 0;
+		p->y++;
 	}
 }
