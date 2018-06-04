@@ -22,6 +22,7 @@ int			main_store(char **str, int count_shapes)
 	if ((side_len = smallest_square_side(count_shapes)) == 0)
 		return (0);
 	solve(side_len, shapes, count_shapes);
+	free(shapes);
 	return (1);
 }
 

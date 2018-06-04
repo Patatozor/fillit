@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "mfillit.h"
 
 /*
 ** Function checks if all string elements are just '.' || '#' || '\n'
