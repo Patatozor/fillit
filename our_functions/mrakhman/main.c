@@ -13,6 +13,8 @@
 #include <stdio.h>
 #include "mfillit.h"
 
+int		get_nb_tetrimino(char *str);
+
 int	main(int argc, char **argv)
 {
 	char	*str;
@@ -24,13 +26,14 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	str = NULL;
-	str = (read_file_to_str(argv[1]));
-	printf("%s\n", str);
+	str = (read_file_to_string(argv[1]));
+	printf("nb_tetri = %d\n", get_nb_tetrimino(str));
+//	printf("%s\n", str);
 // printf("%d\n", smallest_square_side(27));
-	// printf("wrong_symbols: \t\t%d\n", wrong_symbols(str));
-	// printf("len_4_symbols: \t\t%d\n", len_4_symbols(str));
-	// printf("height_4_lines: \t%d\n", height_4_lines(str));
-	// printf("gap_between_figures: \t%d\n", gap_between_figures(str));
-	printf("error_check: \t%d\n", error_check(str));
+	  printf("wrong_symbols: \t\t%d\n", wrong_symbols(str));
+	   printf("len_4_symbols: \t\t%d\n", len_4_symbols(str));
+	 printf("height_4_lines: \t%d\n", height_4_lines(str));
+	 printf("gap_between_figures: \t%d\n", gap_between_figures(str));
+//	printf("error_check: \t%d\n", error_check(str));
 	return (0);
 }

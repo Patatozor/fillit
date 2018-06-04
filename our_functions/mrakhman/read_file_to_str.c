@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "mfillit.h"
 
 /*
 ** Function reads from fd all file untill the end
@@ -39,4 +39,14 @@ char	*read_file_to_string(char *filename)
 	}
 	close(fd);
 	return (file_str);
+}
+
+char **read_file_to_array(char *filename)
+{
+	char *str;
+	char **array;
+
+	str = read_file_to_string(filename);
+	array = ft_strsplit(str, '\n');
+	return (array);
 }

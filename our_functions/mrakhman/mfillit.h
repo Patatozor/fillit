@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/stat.h>
-# include "libft/libft.h"
+# include "../../libft/libft.h"
 
 // # define FILE_ERROR (-1)
 // # define MALLOC_ERROR (-2)
@@ -52,6 +52,12 @@ char			*read_file_to_string(char *filename);
 char			**initialize_field(int sqr_len);
 int				smallest_square_side(int tetrimino_count);
 int				error_check(char *str);
+int 			wrong_symbols(char *str);
+int				tetrimino_has_4_points(char *str);
+int				len_4_symbols(char *str);
+int				height_4_lines(char *str);
+int				gap_between_figures(char *str);
+
 // int				count_shapes(char *str);
 // void			correct_points(t_figure *pfigure);
 // t_figure		*store_shapes(char *str);
