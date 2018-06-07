@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (display_error(1));
 	str = (read_file_to_str(argv[1]));
-	if (str == NULL)
+	if ((open(argv[1], O_RDONLY)) == -1 || str == NULL)
 		return (display_error(0));
 	if (error_check(str) == 0)
 	{
